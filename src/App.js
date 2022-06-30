@@ -7,7 +7,8 @@ import Home from './components/Home/Home';
 import ToDo from './components/ToDo/ToDo';
 import 'react-day-picker/dist/style.css';
 import { useState } from 'react';
-
+import 'react-toastify/dist/ReactToastify.css';
+  
 function App() {
   const [date,setDate]=useState(new Date())
   return (
