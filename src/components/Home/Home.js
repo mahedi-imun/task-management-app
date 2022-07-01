@@ -49,7 +49,7 @@ const Home = () => {
     }
     if (isLoading) return <div>Loading...</div>
     return (
-        <div className='mt-12 '>
+        <div className='mt-12 h-[70vh] '>
             <ToastContainer />
             <div className=' shadow border rounded w-[900px] mx-auto p-12'>
                 <div className='lg:flex justify-center '>

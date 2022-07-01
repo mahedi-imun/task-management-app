@@ -8,6 +8,7 @@ import ToDo from './components/ToDo/ToDo';
 import 'react-day-picker/dist/style.css';
 import { useState } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './components/Footer/Footer';
   
 function App() {
   const [date,setDate]=useState(new Date())
@@ -20,6 +21,7 @@ function App() {
         <Route path="/todo" element={<ToDo />} />
         <Route path="/calender" element={<Calender date={date} setDate={setDate}></Calender>} />
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
