@@ -3,9 +3,12 @@ import { format } from 'date-fns';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ToastContainer, toast } from 'react-toastify'
+import { useQuery } from 'react-query';
+import TodoList from './TodoList';
 const Home = () => {
     const [startDate, setStartDate] = useState(new Date());
     const date = format(startDate, 'PP')
+    const { data:todoLists, isLoading, refetch } = useQuery('task', () => fetch('http://localhost:5000/task').then(res => res.json()));
     const handleAddTask = (event) => {
         event.preventDefault();
         const task = event.target.task.value;
@@ -21,21 +24,34 @@ const Home = () => {
                 if (data.acknowledged) {
                     toast.success('successfully added ')
                     event.target.task.value = '';
+                    refetch()
                 }
             })
 
     }
+    if (isLoading) return <div>Loading...</div>
     return (
         <div className='mt-12 '>
             <ToastContainer />
-            <div className='w-[90%] lg:w-[30%] mx-auto'>
-
-                <form className='' onSubmit={handleAddTask} >
+           <div className=' shadow border rounded w-[900px] mx-auto p-12'>
+           <div className='lg:flex justify-center '>
+                <form className='lg:w-[450px] flex-1' onSubmit={handleAddTask} >
                     <input type="text" placeholder="Add Task" name='task' className="input input-bordered input-primary w-full max-w-xs " required />
-                    <DatePicker dateFormat="PP" className='input input-bordered input-primary w-full max-w-xs mt-4  "' selected={startDate} onChange={(date: Date) => setStartDate(date)} />
-                    <input className='btn mt-4 ' type="submit" value='save' />
+                    <DatePicker dateFormat="PP" className='input input-bordered input-primary w-full max-w-xs mt-4' selected={startDate} onChange={(date: Date) => setStartDate(date)} />
+                    <input className='btn mt-4 btn-primary ' type="submit" value='save' />
                 </form>
+                <div className=' flex-1'>
+                    <h4 className='card-title'>All To-Do list</h4>
+                {todoLists.map(todoList => <TodoList
+                key={todoList._id}
+                todoList={todoList}
+                >
+                </TodoList>)}
+            
             </div>
+            </div>
+           </div>
+           
         </div>
     );
 };
