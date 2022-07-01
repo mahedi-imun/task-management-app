@@ -36,7 +36,7 @@ const Header = () => {
         </ul>
       </div>
       <div className="navbar-end px-6">
-        <h4 className='btn-disabled btn bg-[#0000FF] text-white'> Today- {formattedDate}</h4>
+        <h4 className='btn-disabled btn bg-primary text-white'> Today- {formattedDate}</h4>
       </div>
     </div>
   );

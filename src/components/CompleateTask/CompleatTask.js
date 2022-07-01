@@ -9,14 +9,13 @@ const CompleatTask = () => {
               <div class="card w-96 bg-base-100 shadow-xl">
             <div class="card-body">
                 <h3 className='card-title'>Completed Task</h3>
-                <div>
+              
                     
-                    {tasks.map(task => <div>
+                    {tasks.map(task => <div className='w-[100%]'>
                     {task.compleat && <p className=' line-through text-lg inline px-2 '
                     > <FcCheckmark className=' inline mr-3 text-primary'/> {task.task}</p>}
                     </div>)}
-                </div>
-                
+               
 
             </div>
         </div>
