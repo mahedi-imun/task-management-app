@@ -5,7 +5,7 @@ import { ToastContainer, toast } from 'react-toastify'
 import TodoCard from './TodoCard';
 const ToDo = () => {
     const [id, setId] = useState(null)
-    const { data: tasks, isLoading, refetch } = useQuery('task', () => fetch('http://localhost:5000/task').then(res => res.json()));
+    const { data: tasks, isLoading, refetch } = useQuery('task', () => fetch('https://taskmanagementtask.herokuapp.com/task').then(res => res.json()));
     if (isLoading) return <div>Loading...</div>
 
     return (

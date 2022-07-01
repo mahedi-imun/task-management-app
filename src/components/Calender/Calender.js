@@ -9,7 +9,7 @@ const Calender = ({ date, setDate }) => {
     console.log(tasks.length);
     const formattedDate = format(date, 'PP')
     useEffect(() => {
-        fetch(`http://localhost:5000/task-date/${formattedDate}`, {
+        fetch(`https://taskmanagementtask.herokuapp.com/task-date/${formattedDate}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

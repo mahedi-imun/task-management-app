@@ -3,12 +3,12 @@ import 'react-edit-text/dist/index.css';
 const EditModal = ({ id, setId, refetch }) => {
     const [task, setTask] = useState('');
     useEffect(() => {
-        fetch(`http://localhost:5000/task/${id}`)
+        fetch(`https://taskmanagementtask.herokuapp.com/task/${id}`)
             .then(res => res.json())
             .then(data => setTask(data.task))
     }, [id]);
     const handleSubmit = () => {
-        fetch(`http://localhost:5000/task/${id}`, {
+        fetch(`https://taskmanagementtask.herokuapp.com/task/${id}`, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ task })

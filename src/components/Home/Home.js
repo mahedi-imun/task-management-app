@@ -8,11 +8,11 @@ import TodoList from './TodoList';
 const Home = () => {
     const [startDate, setStartDate] = useState(new Date());
     const date = format(startDate, 'PP')
-    const { data: todoLists, isLoading, refetch } = useQuery('task', () => fetch('http://localhost:5000/task').then(res => res.json()));
+    const { data: todoLists, isLoading, refetch } = useQuery('task', () => fetch('https://taskmanagementtask.herokuapp.com/task').then(res => res.json()));
     const handleAddTask = (event) => {
         event.preventDefault();
         const task = event.target.task.value;
-        const url = `http://localhost:5000/task`;
+        const url = `https://taskmanagementtask.herokuapp.com/task`;
         fetch(url,
             {
                 method: 'POST',
@@ -30,7 +30,7 @@ const Home = () => {
 
     }
     const handleCompleatTask = (taskId) => {
-        fetch(`http://localhost:5000/task/${taskId}`, {
+        fetch(`https://taskmanagementtask.herokuapp.com/task/${taskId}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'

@@ -2,7 +2,7 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { FcCheckmark } from 'react-icons/fc';
 const CompleatTask = () => {
-    const { data: tasks, isLoading, refetch } = useQuery('task-compleat', () => fetch('http://localhost:5000/task').then(res => res.json()));
+    const { data: tasks, isLoading, refetch } = useQuery('task-compleat', () => fetch('https://taskmanagementtask.herokuapp.com/task').then(res => res.json()));
     if (isLoading) return <div>Loading...</div>
     return (
         <div className='flex justify-center mt-12'>
