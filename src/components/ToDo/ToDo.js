@@ -9,21 +9,21 @@ const ToDo = () => {
     if (isLoading) return <div>Loading...</div>
 
     return (
-     <div>
-           <ToastContainer />
-        <div className=' grid md:grid-cols-3 gap-5 justify-center px-6 mt-12'>
-         
-            {
-                tasks.map(task => <TodoCard
-                key={task._id}
-                task={task}
-                ></TodoCard> )
-            }
-            
-        </div>
         <div>
-    </div>
-     </div>
+            <ToastContainer />
+            <div className=' grid md:grid-cols-3 gap-5 justify-center px-6 mt-12'>
+
+                {
+                    tasks.map(task => <TodoCard
+                        key={task._id}
+                        task={task}
+                    ></TodoCard>)
+                }
+
+            </div>
+            <div>
+            </div>
+        </div>
     );
 };
 

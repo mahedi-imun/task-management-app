@@ -5,9 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ToastContainer, toast } from 'react-toastify'
 import { useQuery } from 'react-query';
 import TodoList from './TodoList';
-import EditModal from './EditModal';
 const Home = () => {
-    const [id, setId] = useState(null)
     const [startDate, setStartDate] = useState(new Date());
     const date = format(startDate, 'PP')
     const { data: todoLists, isLoading, refetch } = useQuery('task', () => fetch('http://localhost:5000/task').then(res => res.json()));
@@ -31,24 +29,24 @@ const Home = () => {
             })
 
     }
-    const handleCompleatTask=(taskId)=>{          
-        fetch(`http://localhost:5000/task/${taskId}`,{
-            method:'PATCH',
-            headers:{
-                'Content-Type':'application/json'
+    const handleCompleatTask = (taskId) => {
+        fetch(`http://localhost:5000/task/${taskId}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
             },
-        }).then(res=>res.json())
-        .then(data=>{
-            if(data.modifiedCount >0){
-                refetch()
-                toast.success('successfully compleat')
+        }).then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    refetch()
+                    toast.success('successfully compleat')
 
-            }
-           
-        })
-    
+                }
 
- }
+            })
+
+
+    }
     if (isLoading) return <div>Loading...</div>
     return (
         <div className='mt-12 '>
@@ -73,7 +71,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-           
+
 
         </div>
     );

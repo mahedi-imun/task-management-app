@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'react-edit-text/dist/index.css';
-const EditModal = ({ id, setId , refetch}) => {
+const EditModal = ({ id, setId, refetch }) => {
     const [task, setTask] = useState('');
     useEffect(() => {
         fetch(`http://localhost:5000/task/${id}`)
